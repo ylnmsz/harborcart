@@ -1,0 +1,22 @@
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: never
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://127.0.0.1:3308/harborcart?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8}
+    username: ${DB_USER:harborcart}
+    password: ${DB_PASSWORD:harborcart_local_2026}
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+  data:
+    redis:
+      host: ${REDIS_HOST:127.0.0.1}
+      port: ${REDIS_PORT:6380}
+      connect-timeout: 200ms
+      timeout: 200ms
+app:
+  demo: ${DEMO_ENABLED:true}
+  cache-enabled: ${CACHE_ENABLED:true}

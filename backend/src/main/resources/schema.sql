@@ -1,0 +1,61 @@
+CREATE TABLE IF NOT EXISTS users (
+ id BIGINT AUTO_INCREMENT PRIMARY KEY,
+ email VARCHAR(160) NOT NULL UNIQUE,
+ password_hash VARCHAR(100) NOT NULL,
+ name VARCHAR(60) NOT NULL,
+ role VARCHAR(20) NOT NULL DEFAULT 'BUYER'
+);
+CREATE TABLE IF NOT EXISTS auth_tokens (
+ token_hash VARCHAR(64) PRIMARY KEY,
+ user_id BIGINT NOT NULL,
+ expires_at TIMESTAMP NOT NULL,
+ FOREIGN KEY (user_id) REFERENCES users(id)
+);
+CREATE TABLE IF NOT EXISTS products (
+ id BIGINT AUTO_INCREMENT PRIMARY KEY,
+ name VARCHAR(120) NOT NULL,
+ category VARCHAR(40) NOT NULL,
+ description VARCHAR(1200) NOT NULL,
+ price DECIMAL(12,2) NOT NULL,
+ stock INT NOT NULL,
+ image VARCHAR(160) NOT NULL,
+ active BOOLEAN NOT NULL DEFAULT TRUE,
+ CHECK(price > 0), CHECK(stock >= 0)
+);
+CREATE TABLE IF NOT EXISTS cart_items (
+ user_id BIGINT NOT NULL,
+ product_id BIGINT NOT NULL,
+ quantity INT NOT NULL,
+ PRIMARY KEY(user_id,product_id),
+ FOREIGN KEY(user_id) REFERENCES users(id),
+ FOREIGN KEY(product_id) REFERENCES products(id),
+ CHECK(quantity > 0 AND quantity <= 99)
+);
+CREATE TABLE IF NOT EXISTS shop_orders (
+ id BIGINT AUTO_INCREMENT PRIMARY KEY,
+ user_id BIGINT NOT NULL,
+ request_key VARCHAR(80) NOT NULL,
+ status VARCHAR(20) NOT NULL,
+ currency VARCHAR(3) NOT NULL,
+ country VARCHAR(2) NOT NULL,
+ recipient VARCHAR(80) NOT NULL,
+ address VARCHAR(500) NOT NULL,
+ subtotal DECIMAL(14,2) NOT NULL,
+ shipping DECIMAL(14,2) NOT NULL,
+ total DECIMAL(14,2) NOT NULL,
+ exchange_rate DECIMAL(12,4) NOT NULL,
+ tracking VARCHAR(80),
+ created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ UNIQUE(user_id,request_key),
+ FOREIGN KEY(user_id) REFERENCES users(id)
+);
+CREATE TABLE IF NOT EXISTS order_items (
+ id BIGINT AUTO_INCREMENT PRIMARY KEY,
+ order_id BIGINT NOT NULL,
+ product_id BIGINT NOT NULL,
+ name VARCHAR(120) NOT NULL,
+ unit_price DECIMAL(14,2) NOT NULL,
+ quantity INT NOT NULL,
+ FOREIGN KEY(order_id) REFERENCES shop_orders(id),
+ FOREIGN KEY(product_id) REFERENCES products(id)
+);
