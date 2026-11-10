@@ -1,0 +1,6 @@
+.cart-card { display: flex; gap: 22rpx; padding: 24rpx 0; border-bottom: 1rpx solid #dce6ec; margin-bottom: 20rpx; }
+.cart-image { width: 180rpx; height: 190rpx; background: #e2edf2; border-radius: 18rpx; flex-shrink: 0; }
+.cart-info { flex: 1; min-width: 0; }
+.cart-name { font-weight: 600; line-height: 1.4; margin-bottom: 10rpx; }
+.cart-controls { margin-top: 18rpx; flex-wrap: wrap; }
+.checkout-button { margin-top: 28rpx; }

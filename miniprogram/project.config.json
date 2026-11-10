@@ -1,0 +1,9 @@
+{
+  "description": "HarborCart 微信原生小程序商城",
+  "miniprogramRoot": "./",
+  "compileType": "miniprogram",
+  "appid": "touristappid",
+  "projectname": "HarborCart",
+  "setting": { "es6": true, "enhance": true, "minified": true, "urlCheck": false },
+  "packOptions": { "ignore": [{ "type": "folder", "value": "tests" }, { "type": "file", "value": "README.md" }] }
+}

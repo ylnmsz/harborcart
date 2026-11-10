@@ -1,0 +1,9 @@
+<view class="page">
+  <text class="eyebrow">YOUR LITTLE HARBOR</text><view class="title">我的好物港</view>
+  <view class="panel identity"><view class="avatar">H</view><view class="identity-text"><view class="name">{{user ? user.name : '欢迎来到好物港'}}</view><view class="muted break">{{user ? user.email : '登录后管理购物车与订单'}}</view></view></view>
+  <button wx:if="{{!user}}" class="primary full" bindtap="login">登录 / 注册</button>
+  <view wx:if="{{pending}}" class="notice pending">有一笔订单提交结果待确认。<button class="text-button" bindtap="resume">继续确认 →</button></view>
+  <view class="section-title">我的购物</view><view class="panel menu"><button class="menu-item" bindtap="orders"><text>我的订单</text><text>↗</text></button><button class="menu-item" bindtap="cart"><text>购物车</text><text>↗</text></button></view>
+  <view class="section-title">关于好物港</view><view class="panel"><view class="about-title">为日常，挑一点喜欢的。</view><view class="muted">精选居家、桌面与出行用品，支持美国、德国、英国配送，以及 USD、EUR、GBP 结算。</view><view class="divider"></view><view class="muted">当前为项目演示环境。付款采用模拟操作，汇率为固定演示值，不含进口关税。</view></view>
+  <button wx:if="{{user}}" class="secondary full" bindtap="logout" disabled="{{busy}}" loading="{{busy}}">退出登录</button>
+</view>

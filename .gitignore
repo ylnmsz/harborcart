@@ -5,3 +5,4 @@ target/
 *.log
 .local/
 start-local.ps1
+project.private.config.json

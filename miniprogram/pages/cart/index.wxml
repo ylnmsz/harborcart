@@ -1,0 +1,17 @@
+<view class="page">
+  <text class="eyebrow">YOUR EVERYDAY FINDS</text><view class="title">购物车</view>
+  <view wx:if="{{!loggedIn}}" class="empty"><view class="subtitle">登录后，收藏你的日常好物。</view><button class="primary" bindtap="login">登录 / 注册</button></view>
+  <block wx:else>
+    <view wx:if="{{pending}}" class="notice">上次下单的结果尚未确认，请先恢复提交。<button class="text-button" bindtap="checkout">恢复订单提交 →</button></view>
+    <view wx:if="{{loading}}" class="empty muted">正在更新购物车…</view>
+    <view wx:elif="{{error}}" class="empty"><view class="error">{{error}}</view><button class="secondary" bindtap="load">重试</button></view>
+    <view wx:elif="{{!rows.length}}" class="empty"><view class="subtitle">购物车还是空的，去看看喜欢的商品吧。</view><button class="primary" bindtap="browse">发现好物</button></view>
+    <block wx:else>
+      <view class="cart-card" wx:for="{{rows}}" wx:key="id">
+        <image class="cart-image" src="{{item.picture}}" mode="aspectFit" />
+        <view class="cart-info"><view class="cart-name">{{item.name}}</view><text class="muted">{{item.priceText}}</text><view wx:if="{{item.unavailable || item.quantity > item.stock}}" class="danger muted">商品已下架或库存不足，请调整</view><view class="row cart-controls"><view class="quantity"><button data-id="{{item.id}}" data-quantity="{{item.quantity - 1}}" bindtap="change" disabled="{{busy || pending || item.quantity <= 1}}" aria-label="减少 {{item.name}}">−</button><text>{{item.quantity}}</text><button data-id="{{item.id}}" data-quantity="{{item.quantity + 1}}" bindtap="change" disabled="{{busy || pending || item.quantity >= item.stock || item.quantity >= 99}}" aria-label="增加 {{item.name}}">＋</button></view><button class="text-button danger" data-id="{{item.id}}" data-quantity="0" bindtap="change" disabled="{{busy || pending}}">移除</button></view></view>
+      </view>
+      <view class="panel"><view class="row"><text>商品小计 · {{count}} 件</text><text class="price">{{total}}</text></view><view class="divider"></view><text class="muted">运费将在结算页确认。购物车不预占库存，下单时重新核实价格与库存。</text><button class="primary full checkout-button" bindtap="checkout" disabled="{{busy}}">{{pending ? '恢复订单提交' : '去结算 →'}}</button></view>
+    </block>
+  </block>
+</view>

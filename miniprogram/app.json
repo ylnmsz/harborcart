@@ -1,0 +1,16 @@
+{
+  "pages": ["pages/home/index", "pages/detail/index", "pages/cart/index", "pages/checkout/index", "pages/orders/index", "pages/profile/index", "pages/login/index"],
+  "window": { "navigationBarTitleText": "HarborCart 好物港", "navigationBarBackgroundColor": "#f2f6f8", "navigationBarTextStyle": "black", "backgroundColor": "#f2f6f8", "backgroundTextStyle": "dark" },
+  "tabBar": {
+    "color": "#72828d", "selectedColor": "#245b78", "backgroundColor": "#ffffff", "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/home/index", "text": "发现", "iconPath": "assets/home.png", "selectedIconPath": "assets/home-active.png" },
+      { "pagePath": "pages/cart/index", "text": "购物车", "iconPath": "assets/cart.png", "selectedIconPath": "assets/cart-active.png" },
+      { "pagePath": "pages/orders/index", "text": "订单", "iconPath": "assets/orders.png", "selectedIconPath": "assets/orders-active.png" },
+      { "pagePath": "pages/profile/index", "text": "我的", "iconPath": "assets/profile.png", "selectedIconPath": "assets/profile-active.png" }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "style": "v2"
+}

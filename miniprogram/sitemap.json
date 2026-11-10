@@ -1,0 +1,1 @@
+{ "desc": "商城公开展示页", "rules": [{ "action": "allow", "page": "pages/home/index" }, { "action": "allow", "page": "pages/detail/index" }, { "action": "disallow", "page": "*" }] }

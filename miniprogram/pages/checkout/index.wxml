@@ -1,0 +1,20 @@
+<view class="page safe-bottom">
+  <text class="eyebrow">ALMOST YOURS</text><view class="title">确认这份日常</view>
+  <view wx:if="{{pending}}" class="notice">上次提交结果尚未确认。收件信息已保留，点击“重试原订单”核对结果，避免重复创建。</view>
+  <view wx:if="{{error}}" class="error">{{error}}<button wx:if="{{!pending}}" class="text-button" bindtap="load">重新加载</button></view>
+  <view wx:if="{{!loggedIn}}" class="empty"><view class="subtitle">请先登录，再继续结算。</view><button class="primary" bindtap="login">登录 / 注册</button></view>
+  <view wx:elif="{{loading}}" class="empty muted">正在获取结算信息…</view>
+  <block wx:else>
+    <view class="panel"><view class="section-title">配送信息</view>
+      <text class="label">配送国家</text><picker range="{{countries}}" range-key="name" value="{{countryIndex}}" bindchange="changeCountry" disabled="{{busy || pending}}"><view class="field row"><text>{{countries[countryIndex].name}}</text><text>⌄</text></view></picker>
+      <text class="label">收件人</text><input class="field" value="{{recipient}}" bindinput="inputRecipient" maxlength="80" placeholder="请输入收件人姓名" disabled="{{busy || pending}}" aria-label="收件人" />
+      <text class="label">完整地址</text><textarea class="field" value="{{address}}" bindinput="inputAddress" maxlength="500" placeholder="街道、城市、州或省、邮政编码" disabled="{{busy || pending}}" aria-label="完整地址" />
+    </view>
+    <view class="panel"><text class="label">结算币种</text><picker range="{{currencies}}" value="{{currencyIndex}}" bindchange="changeCurrency" disabled="{{busy || pending}}"><view class="field row"><text>{{currencies[currencyIndex]}}</text><text>⌄</text></view></picker>
+      <block wx:if="{{quote}}"><view class="divider"></view><view class="row totals"><text class="muted">商品小计 · {{count}} 件</text><text>{{quote.subtotal}}</text></view><view class="row totals"><text class="muted">跨境运费</text><text>{{quote.shipping}}</text></view><view class="divider"></view><view class="row"><text>合计</text><text class="price">{{quote.total}}</text></view></block>
+      <view wx:elif="{{!pending && !error}}" class="muted totals">正在更新报价…</view>
+    </view>
+    <view class="notice">使用固定演示汇率，不含进口关税。下单后扣减库存，待付款订单可取消。付款为演示操作，不产生真实扣费。</view>
+    <button class="primary full" bindtap="submit" loading="{{busy}}" disabled="{{busy || (!pending && (!quote || count === 0))}}">{{pending ? '重试原订单' : '确认下单'}}</button>
+  </block>
+</view>

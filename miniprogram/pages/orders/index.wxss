@@ -1,0 +1,7 @@
+.filters { display: flex; margin: 24rpx 0; gap: 6rpx; }
+.filter { flex: 1; padding: 18rpx 4rpx; background: transparent; font-size: 23rpx; color: #687d8a; white-space: nowrap; }
+.filter.active { background: #245b78; color: #fff; }
+.order-line { margin: 24rpx 0; line-height: 1.5; }
+.order-line .row { margin-top: 8rpx; }
+.address { margin-top: 22rpx; word-break: break-word; }
+.panel .notice { margin-top: 22rpx; margin-bottom: 0; }

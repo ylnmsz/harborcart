@@ -1,0 +1,20 @@
+<view class="page">
+  <view class="hero">
+    <view class="hero-copy"><text class="eyebrow">HARBOR / EVERYDAY</text><view class="hero-title"><view>把好物，</view><view>带进日常。</view></view><text class="subtitle">从桌面到远方，选一件喜欢的。</text></view>
+    <image class="hero-image" src="/assets/bottle.png" mode="aspectFit" aria-label="保温水瓶" />
+    <text class="hero-stamp">生活好物选集</text>
+  </view>
+  <view class="search"><text class="search-mark">⌕</text><input value="{{keyword}}" bindinput="search" placeholder="搜索商品 / Home / Travel" confirm-type="search" aria-label="搜索商品" /></view>
+  <view class="categories"><button wx:for="{{categories}}" wx:key="value" class="category {{category === item.value ? 'selected' : ''}}" data-value="{{item.value}}" bindtap="selectCategory">{{item.label}}</button></view>
+  <view class="row"><view class="section-title">日常精选</view><button class="text-button" bindtap="toggleSort">{{sort === 'price' ? '价格从低到高 ↑' : '按价格排序 ↕'}}</button></view>
+  <view wx:if="{{loading}}" class="empty muted">正在为你整理好物…</view>
+  <view wx:elif="{{error}}" class="empty"><view class="error">{{error}}</view><button class="secondary" bindtap="load">重新加载</button></view>
+  <view wx:elif="{{!products.length}}" class="empty muted">暂时没有匹配的商品，试试其他关键词。</view>
+  <view wx:else class="product-grid">
+    <view wx:for="{{products}}" wx:key="id" class="product-card" data-id="{{item.id}}" bindtap="openProduct" role="button" aria-label="查看 {{item.name}}">
+      <view class="product-art"><image src="{{item.picture}}" mode="aspectFit" lazy-load /><text wx:if="{{item.unavailable}}" class="stock">暂时售罄</text></view>
+      <view class="product-info"><text class="muted">{{item.categoryLabel}}</text><view class="product-name">{{item.name}}</view><view class="row"><text class="product-price">{{item.priceText}}</text><text class="arrow">↗</text></view></view>
+    </view>
+  </view>
+  <view class="footer-note">满 USD 100 免运费 · 支持美 / 德 / 英配送</view>
+</view>

@@ -1,0 +1,12 @@
+<view class="page">
+  <view class="login-brand">HARBOR<text class="brand-dot">.</text></view><text class="eyebrow">好物港 · 日常有好物</text>
+  <view class="title">{{registering ? '从这里认识你' : '欢迎回来'}}</view><view class="subtitle">使用商城邮箱账户，与网页商城共享购物车和订单。</view>
+  <view wx:if="{{error}}" class="error login-error">{{error}}</view>
+  <view class="panel login-form">
+    <block wx:if="{{registering}}"><text class="label">昵称</text><input class="field" value="{{name}}" data-field="name" bindinput="input" maxlength="60" disabled="{{busy}}" placeholder="怎么称呼你" aria-label="昵称" /></block>
+    <text class="label">邮箱</text><input class="field" value="{{email}}" data-field="email" bindinput="input" maxlength="160" disabled="{{busy}}" placeholder="name@example.com" aria-label="邮箱" />
+    <text class="label">密码</text><input class="field" password value="{{password}}" data-field="password" bindinput="input" maxlength="72" disabled="{{busy}}" placeholder="{{registering ? '至少 8 位' : '请输入密码'}}" aria-label="密码" />
+    <button class="primary full submit" bindtap="submit" loading="{{busy}}" disabled="{{busy}}">{{registering ? '创建账户' : '登录'}}</button>
+    <button class="text-button full" bindtap="toggle" disabled="{{busy}}">{{registering ? '已有账户，去登录' : '第一次来？创建账户'}}</button>
+  </view>
+</view>

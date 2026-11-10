@@ -1,0 +1,34 @@
+page { background: #f2f6f8; color: #20394c; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif; font-size: 28rpx; }
+view, text, input, textarea, button { box-sizing: border-box; }
+button { margin: 0; border-radius: 16rpx; font-size: 28rpx; font-weight: 600; line-height: 1.4; }
+button::after { border: 0; }
+button[disabled] { opacity: .45; }
+.page { padding: 32rpx 32rpx 48rpx; }
+.eyebrow { display: block; font-size: 22rpx; letter-spacing: 4rpx; color: #587a8e; margin-bottom: 12rpx; }
+.title { font-size: 48rpx; font-weight: 650; line-height: 1.25; margin-bottom: 16rpx; }
+.subtitle { color: #687d8a; line-height: 1.65; font-size: 25rpx; }
+.section-title { font-size: 32rpx; font-weight: 650; margin: 30rpx 0 20rpx; }
+.panel { background: #fff; border: 1rpx solid #e3ebef; border-radius: 24rpx; padding: 28rpx; margin-bottom: 24rpx; }
+.row { display: flex; justify-content: space-between; align-items: center; gap: 16rpx; }
+.muted { color: #687d8a; font-size: 24rpx; line-height: 1.6; }
+.primary { background: #245b78; color: #fff; padding: 24rpx 32rpx; }
+.secondary { background: #e9f0f4; color: #245b78; padding: 22rpx 30rpx; }
+.text-button { color: #245b78; background: transparent; padding: 16rpx 12rpx; font-size: 25rpx; }
+.danger { color: #a3463c; }
+.full { width: 100%; }
+.empty { padding: 80rpx 24rpx; text-align: center; }
+.empty .primary { margin-top: 28rpx; }
+.error { color: #974a36; background: #fff0e8; border-radius: 16rpx; padding: 22rpx; margin-bottom: 24rpx; line-height: 1.6; }
+.notice { background: #e4eff5; color: #315f77; padding: 22rpx; border-radius: 16rpx; font-size: 24rpx; line-height: 1.65; margin-bottom: 24rpx; }
+.price { font-weight: 650; font-size: 32rpx; }
+.label { display: block; font-size: 25rpx; font-weight: 600; margin: 24rpx 0 12rpx; }
+.field { background: #f2f6f8; border: 1rpx solid #dce6ec; border-radius: 14rpx; padding: 22rpx; min-height: 88rpx; width: 100%; font-size: 28rpx; }
+textarea.field { height: 170rpx; line-height: 1.5; }
+.divider { height: 1rpx; background: #e3ebef; margin: 24rpx 0; }
+.pill { background: #e9f0f4; color: #47677b; border-radius: 999rpx; padding: 10rpx 18rpx; font-size: 22rpx; }
+.actions { display: flex; gap: 16rpx; margin-top: 24rpx; }
+.actions button { flex: 1; }
+.safe-bottom { padding-bottom: calc(24rpx + env(safe-area-inset-bottom)); }
+.break { word-break: break-all; }
+.quantity { display: flex; align-items: center; gap: 18rpx; }
+.quantity button { width: 64rpx; height: 64rpx; padding: 10rpx; background: #edf3f6; font-size: 32rpx; color: #245b78; }

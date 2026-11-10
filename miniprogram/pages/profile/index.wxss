@@ -1,0 +1,9 @@
+.identity { display: flex; align-items: center; gap: 24rpx; margin-top: 30rpx; }
+.avatar { width: 100rpx; height: 100rpx; line-height: 100rpx; text-align: center; background: #dcecf3; border-radius: 26rpx; font-family: Georgia, serif; font-size: 58rpx; flex-shrink: 0; }
+.identity-text { min-width: 0; }
+.name { font-size: 32rpx; font-weight: 600; margin-bottom: 8rpx; }
+.menu { padding: 0 24rpx; }
+.menu-item { display: flex; align-items: center; justify-content: space-between; width: 100%; background: #fff; padding: 30rpx 0; color: #20394c; border-radius: 0; }
+.menu-item + .menu-item { border-top: 1rpx solid #e3ebef; }
+.about-title { font-size: 30rpx; margin-bottom: 18rpx; font-weight: 600; }
+.pending { margin-top: 24rpx; }

@@ -1,0 +1,6 @@
+.login-brand { font-family: Georgia, serif; font-size: 64rpx; font-weight: bold; letter-spacing: 5rpx; margin: 55rpx 0 16rpx; }
+.brand-dot { color: #80a23c; }
+.title { margin-top: 42rpx; }
+.login-form { margin-top: 32rpx; }
+.submit { margin-top: 36rpx; }
+.login-error { margin-top: 24rpx; }

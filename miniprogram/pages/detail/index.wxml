@@ -1,0 +1,14 @@
+<view class="page detail-page">
+  <view wx:if="{{loading}}" class="empty muted">正在载入商品…</view>
+  <view wx:elif="{{error}}" class="empty"><view class="error">{{error}}</view><button class="secondary" bindtap="load">重新加载</button></view>
+  <block wx:else>
+    <view class="detail-art"><image src="{{product.picture}}" mode="aspectFit" /></view>
+    <view class="row"><text class="pill">{{product.categoryLabel}}</text><text class="muted">{{product.unavailable ? '暂时售罄' : '库存 ' + product.stock + ' 件'}}</text></view>
+    <view class="detail-title">{{product.name}}</view>
+    <view class="price">{{product.priceText}}</view>
+    <view class="description">{{product.description}}</view>
+    <view class="panel"><view class="row"><text>购买数量</text><view class="quantity"><button bindtap="decrease" disabled="{{quantity <= 1 || busy}}" aria-label="减少数量">−</button><text>{{quantity}}</text><button bindtap="increase" disabled="{{quantity >= product.stock || quantity >= 99 || busy}}" aria-label="增加数量">＋</button></view></view></view>
+    <view class="notice">支持配送至美国、德国和英国。商品按 USD 标价，结算时可选择 USD / EUR / GBP，运费在结算页确认。</view>
+    <view class="bottom-actions safe-bottom"><button class="secondary" bindtap="openCart">购物车</button><button class="primary" bindtap="add" loading="{{busy}}" disabled="{{busy || product.unavailable}}">{{product.unavailable ? '暂时售罄' : '加入购物车'}}</button></view>
+  </block>
+</view>
